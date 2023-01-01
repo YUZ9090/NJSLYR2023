@@ -1,34 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel='stylesheet' type='text/css' href='../../css/style.css'>
-</head>
-<body>
-    <h1 >게시물보기</h1>
-    <table width="100%" class="detail" border="1">
-        <tr>
-            <th>글번호</th>
-            <td><%=article.no%></td>
-        </tr>
-        <tr>
-            <th>제목</th>
-            <td><%=article.title%></td>
-        </tr>
-        <tr>
-            <th>글쓴이</th>
-            <td><%=article.writer  %></td>
-        </tr>
-        <tr>
-            <th>내용</th>
-            <td class="article"><%=article.article  %></td>
-        </tr>
+<div class="bbs-list">
+    <table class="bbs">
+        <% articleList.slice().reverse().forEach(function(item){%>
+            <tr class="bbs-name_wrap">
+                <td class="bbs-name"> <span class="squ">#No.</span><%=item.no%> : <%=item.writer%> </td>
+                <td class="bbs-del">
+                    <input type='button' value='DEL' id='btnOpen'>
+                </td>                
+            </tr>
+            <tr class="bbs-txt_wrap">
+                <td colspan="2" class="article"><%=item.article %></td>
+            </tr>
+
+            <!--수정폼
+            <form action="/board/edit/<%=item.no%>" method="post" >
+                <tr class="edit">
+                    <td>#No.<%=item.no%> <input name="writer"  type="text" placeholder="NAME"  required/></td>
+                    <td><input name="password"  type="password" placeholder="PASSWORD"  required/></td>
+                </tr>
+                <tr class="edit">
+                    <td colspan="2" class="article"> <textarea name="article"  rows="8" placeholder="TEXT HERE"  required></textarea></td>
+                </tr>
+                <tr class="edit">                
+                    <td colspan="2"><button type="submit">EDIT</button></td>
+                </tr>
+            </form>
+            -->
+
+            <div id='modal'>
+                <div id='content'>
+                    <input type='button' value='X' class="close" id='btnClose'/>
+                    <label>PASSWORD?</label><br/>
+                    <input type='password' id='pwd' value='' />
+                    <a href="/delete/<%=item.no%>">DEL</a>
+                </div>
+            </div>
+        <% })%>
+
     </table>
-    <a href="/board">뒤로</a>
-    <a href="/board/edit/<%=article.no%>">글수정</a>
-    <a href="/board/delete/<%=article.no%>">글삭제</a>
-</body>
-</html>
+</div>
+
+<script>
+    var btnOpen  = document.getElementById('btnOpen');
+    var btnClose = document.getElementById('btnClose');
+    
+    // modal 창을 감춤
+    var closeRtn = function(){
+      var modal = document.getElementById('modal');
+      modal.style.display = 'none';
+    }
+    
+    // modal 창을 보여줌
+    btnOpen.onclick = function(){
+      var modal = document.getElementById('modal');
+      modal.style.display = 'block';
+    }
+    
+    btnClose.onclick = closeRtn;
+</script>

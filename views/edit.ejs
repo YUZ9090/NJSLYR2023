@@ -1,4 +1,17 @@
-<!DOCTYPE html>
+<form action="/board/edit/<%=item.no%>" method="post" >
+    <tr class="edit">
+        <td>#No.<%=item.no%> <input name="writer"  type="text" placeholder="NAME"  required/></td>
+        <td><input name="password"  type="password" placeholder="PASSWORD"  required/></td>
+    </tr>
+    <tr class="edit">
+        <td colspan="2" class="article"> <textarea name="article"  rows="8" placeholder="내용입력" maxlength="10"  required></textarea></td>
+    </tr>
+    <tr class="edit">
+        <td colspan="2"><button type="submit">EDIT</button></td>
+    </tr>
+</form>
+
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -31,3 +44,5 @@
 
 </body>
 </html>
+
+-->

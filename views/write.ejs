@@ -1,33 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel='stylesheet' type'text/css' href='../css/style.css'>
-</head>
-<body>
-    <h1>글쓰기</h1>
-    <form action="/board/write" method="post">
-        <table width="100%" class="detail" border="1">
-            <tr>
-                <th>제목</th>
-                <td><input name="title"  type="text" placeholder="제목입력"  required/></td>
+<div class="bbs-write_wrap">
+    <form action="/write" method="post">
+        <table class="bbs">
+            <tr class="bbs-write">
+                <td class="bbs-write_name"><input id="bbs-write_field" class="nickname" name="writer"  type="text" placeholder="#NAME"  required/></td>
+                <td><input id="bbs-write_field" name="password" type="password" placeholder="PASSWORD" required/></td>
             </tr>
             <tr>
-                <th>글쓴이</th>
-                <td><input name="writer" type="text" placeholder="글쓴이입력"  required/></td>
+                <td colspan="2" class="article">
+                    <div class="text_box">
+                        <textarea class="bbs-txt_field" name="article" rows="8" cols="42" placeholder="TEXT HERE" required></textarea>
+                        <div class="count"><span>0</span>/140</div>
+                    </div>
+                </td>
             </tr>
-            <tr>
-                <th>내용</th>
-                <td class="article"> <textarea name="article"  rows="8" placeholder="내용입력"  required></textarea></td>
+            <tr>                
+                <td colspan="2"><button class="bbs-write_send" type="submit">SEND</button></td>
             </tr>
         </table>
-        <button type="submit">글쓰기</button>
     </form>
-    <a href="/board">뒤로</a>
+</div>
 
 
-</body>
-</html>
+<script>
+$('.nickname').keyup(function(){
+    var content = $(this).val();
+    $('.nickname').html(content.length);
+    if (content.length > 12){
+        $(this).val(content.substring(0, 12));
+    }
+});
+
+$('.text_box textarea').keyup(function(){
+    var content = $(this).val();
+    $('.text_box .count span').html(content.length);
+    if (content.length > 140){
+        $(this).val(content.substring(0, 140));
+        $('.text_box .count span').html(140);
+    }
+});
+</script>

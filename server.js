@@ -14,22 +14,17 @@ app.use(express.static('public'));
 //이것을 추가해줘야 post 가 보내짐.
 app.use(express.urlencoded( {extended : false } ));
 
-let homeList = [
-    {link:'board', item: 'board'},
-    {link:'#', item: 'test1'},
-    {link:'#', item: 'test2'},
-]
 
 let articleList = [
-    {no:0, title: '게시글제목0', writer:'캘리번', article:'게시글내용0'},
-    {no:1, title: '게시글제목1', writer:'카피바라', article:'게시글내용1'},
-    {no:2, title: '게시글제목2', writer:'털닭', article:'게시글내용2'},
-    {no:3, title: '게시글제목3', writer:'뽀송이', article:'게시글내용3'},
-    {no:4, title: '게시글제목4', writer:'맴미', article:'게시글내용4'},
-    {no:5, title: '게시글제목5', writer:'가나쥐', article:'게시글내용5'}
+    {no:0, writer:'캘리번', password: '1234',  article:'게시글내용0'},
+    {no:1, writer:'카피바라', password: '123456', article:'게시글내용1'},
+    {no:2, writer:'털닭', password: '2', article:'게시글내용2'},
+    {no:3, writer:'뽀송이', password: '3', article:'게시글내용3'},
+    {no:4, writer:'맴미', password: '4', article:'게시글내용4'},
+    {no:5, writer:'가나쥐', password: '5', article:'게시글내용5'}
 ]
 
-/*------------------메인화면-------------------*/
+/*------------------메인화면-------------------
 app.get('/', function(req, res) {
     let DataObj={
         homeList:homeList
@@ -41,18 +36,18 @@ app.get('/', function(req, res) {
         res.end(html);
     });
 });
-
+*/
 
 
 let artId =5;
 
 
 /*------------------게시판 리스트-------------------*/
-app.get('/board', function(req, res) {
+app.get('/', function(req, res) {
     let DataObj = {
         articleList:articleList
     }
-    req.app.render('board', DataObj, (err, html)=>{
+    req.app.render('index', DataObj, (err, html)=>{
         if(err) {
             throw err;
         }
@@ -65,7 +60,7 @@ app.get('/board', function(req, res) {
 /*------------------게시물 디테일-------------------*/
 ///detail/:id이렇게 콜론(:)뒤에 오는 변수를 파라미터로 받게된다.
 //그 파라미터는 req.params.id로 접근할 수 있다.
-app.get('/board/detail/:id', function(req, res) {
+app.get('/detail/:id', function(req, res) {
     let getarticle={};
     articleList.forEach(function(article) {
         if(article.no == req.params.id) {
@@ -88,7 +83,7 @@ app.get('/board/detail/:id', function(req, res) {
 
 
 /*------------------글쓰기-------------------*/
-app.get('/board/write', function(req, res) {
+app.get('/write', function(req, res) {
     req.app.render('write', (err, html)=>{
         if(err) {
             throw err;
@@ -97,7 +92,7 @@ app.get('/board/write', function(req, res) {
     });
 });
 
-app.post('/board/write', function(req, res) {
+app.post('/write', function(req, res) {
 
     artId ++;
     let title = req.body.title;
@@ -105,7 +100,7 @@ app.post('/board/write', function(req, res) {
     let article = req.body.article;
 
     articleList.push({no:artId, title: title, writer:writer, article: article});
-    res.redirect('/board');
+    res.redirect('/');
 });
 /*------------------글쓰기-------------------*/
 
@@ -113,7 +108,7 @@ app.post('/board/write', function(req, res) {
 
 
 /*------------------글수정-------------------*/
-app.get('/board/edit/:id', function(req, res) {
+app.get('/edit/:id', function(req, res) {
     let DataObj = {
         articleId : req.params.id,
         articleList:articleList
@@ -127,7 +122,7 @@ app.get('/board/edit/:id', function(req, res) {
 });
 
 
-app.post('/board/edit/:id', function(req, res) {
+app.post('/edit/:id', function(req, res) {
     let getarticle={};
     articleList.forEach(function(article) {
         if(article.no == req.params.id) {
@@ -143,13 +138,13 @@ app.post('/board/edit/:id', function(req, res) {
 
     articleList.splice(idx,1,{no:id, title: title, writer:writer, article: article});
     
-    res.redirect('/board');
+    res.redirect('/');
 });
 /*------------------글수정-------------------*/
 
 
 /*------------------글삭제-------------------*/
-app.get('/board/delete/:id', function(req, res) {
+app.get('/delete/:id', function(req, res) {
     let getarticle={};
     articleList.forEach(function(article) {
         if(article.no == req.params.id) {
@@ -160,7 +155,7 @@ app.get('/board/delete/:id', function(req, res) {
     
     articleList.splice(idx,1);
 
-    res.redirect('/board');
+    res.redirect('/');
 });
 
 
