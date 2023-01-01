@@ -1,0 +1,26 @@
+#bbsdiv{
+    
+    background-color: wheat;
+    width:50%;
+    margin:auto;
+}
+
+.bbs{
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+
+}
+
+.bbs>th, td{
+    border: 1px solid black;
+}
+
+div{
+    border: 1px solid red;
+}
+
+.edit{
+    display: none;
+}
+
