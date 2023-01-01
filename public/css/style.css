@@ -135,6 +135,12 @@ section p {margin-top: 4px;}
     
 } */
 
+.detail-article {
+    width:388px;
+    word-wrap: break-word;
+}
+
+
 #modal{
 	z-index : 1;
 	background-color: rgba(0,0,0,.3);

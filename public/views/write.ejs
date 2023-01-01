@@ -33,9 +33,9 @@ $('.nickname').keyup(function(){
 $('.text_box textarea').keyup(function(){
     var content = $(this).val();
     $('.text_box .count span').html(content.length);
-    if (content.length > 140){
-        $(this).val(content.substring(0, 140));
-        $('.text_box .count span').html(140);
+    if (content.length > 360){
+        $(this).val(content.substring(0, 360));
+        $('.text_box .count span').html(360);
     }
 });
 </script>
