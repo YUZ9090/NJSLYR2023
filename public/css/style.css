@@ -121,7 +121,12 @@ section p {margin-top: 4px;}
 .bbs-txt_field {padding: 10px; resize: none;}
 
 /* bbs-list */
-.bbs-list {border: 1px solid #61ff00;}
+.bbs-list {border: 1px solid #61ff00;
+    overflow-y: scroll;
+    height:450px;
+    overflow-x: hidden;
+
+}
 /* .bbs-list td {border: none;} */
 .bbs-name_wrap>td {padding: 2% 3%;}
 .bbs-del {text-align: center;}
@@ -138,6 +143,12 @@ section p {margin-top: 4px;}
 .detail-article {
     width:388px;
     word-wrap: break-word;
+}
+
+.detail-page{
+    overflow-y: scroll;
+    height:100px;
+    background-color: red;
 }
 
 

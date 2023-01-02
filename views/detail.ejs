@@ -4,7 +4,7 @@
             <tr class="bbs-name_wrap">
                 <td class="bbs-name"> <span class="squ">#No.</span><%=item.no%> : <%=item.writer%> </td>
                 <td class="bbs-del">
-                    <input type='button' value='DEL' id='btnOpen'>
+                    <input type='button' value='DEL' id='btnOpen' class="btnOpen">
                 </td>                
             </tr>
             <tr class="bbs-txt_wrap">
@@ -26,12 +26,18 @@
             </form>
             -->
 
-            <div id='modal'>
+            <div id='modal' class='modal'>
                 <div id='content'>
-                    <input type='button' value='X' class="close" id='btnClose'/>
+                    <input type='button' value='X' class="close" id='btnClose' class="btnClose"/>
                     <label>PASSWORD?</label><br/>
+                    <form action="/delete/<%=item.no%>" method="post">
+                        <input type='password' id='pwd' name="password" value='' />
+                        <button type="submit">EDIT</button>
+                    </form>
+                    <!--
                     <input type='password' id='pwd' value='' />
                     <a href="/delete/<%=item.no%>">DEL</a>
+                    -->
                 </div>
             </div>
         <% })%>
@@ -40,8 +46,9 @@
 </div>
 
 <script>
-    var btnOpen  = document.getElementById('btnOpen');
     var btnClose = document.getElementById('btnClose');
+    var btnOpen  = document.querySelectorAll('.btnOpen');
+
     
     // modal 창을 감춤
     var closeRtn = function(){
@@ -50,10 +57,10 @@
     }
     
     // modal 창을 보여줌
-    btnOpen.onclick = function(){
-      var modal = document.getElementById('modal');
-      modal.style.display = 'block';
-    }
-    
+    $(".btnOpen").click(function(){
+        var modal = document.getElementById('modal');
+        modal.style.display = 'block';
+    });
+
     btnClose.onclick = closeRtn;
 </script>

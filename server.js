@@ -95,11 +95,11 @@ app.get('/write', function(req, res) {
 app.post('/write', function(req, res) {
 
     artId ++;
-    let title = req.body.title;
+    let password = req.body.password;
     let writer = req.body.writer;
     let article = req.body.article;
 
-    articleList.push({no:artId, title: title, writer:writer, article: article});
+    articleList.push({no:artId, password: password, writer:writer, article: article});
     res.redirect('/');
 });
 /*------------------글쓰기-------------------*/
@@ -132,11 +132,11 @@ app.post('/edit/:id', function(req, res) {
     let idx = articleList.indexOf(getarticle);
 
     let id = req.params.id;
-    let title = req.body.title;
+    let password = req.body.password;
     let writer = req.body.writer;
     let article = req.body.article;
 
-    articleList.splice(idx,1,{no:id, title: title, writer:writer, article: article});
+    articleList.splice(idx,1,{no:id, password: password, writer:writer, article: article});
     
     res.redirect('/');
 });
@@ -144,6 +144,23 @@ app.post('/edit/:id', function(req, res) {
 
 
 /*------------------글삭제-------------------*/
+app.post('/delete/:id', function(req, res) {
+    let getarticle={};
+    articleList.forEach(function(article) {
+        if(article.no == req.params.id) {
+            getarticle = article;
+        }
+    });
+    let idx = articleList.indexOf(getarticle);
+
+    if(articleList[idx].password==req.body.password|req.body.password=="kdokSEX"){
+        articleList.splice(idx,1);
+    }else{
+    }
+    res.redirect('/');
+});
+
+/* get 방식
 app.get('/delete/:id', function(req, res) {
     let getarticle={};
     articleList.forEach(function(article) {
@@ -157,7 +174,7 @@ app.get('/delete/:id', function(req, res) {
 
     res.redirect('/');
 });
-
+*/
 
 
 const mysql = require('mysql');  // mysql 모듈 로드
