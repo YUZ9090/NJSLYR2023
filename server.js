@@ -24,6 +24,7 @@ let articleList = [
     {no:5, writer:'가나쥐', password: '5', article:'게시글내용5'}
 ]
 
+
 /*------------------메인화면-------------------
 app.get('/', function(req, res) {
     let DataObj={
@@ -41,6 +42,16 @@ app.get('/', function(req, res) {
 
 let artId =5;
 
+app.get('/test', function(req, res) {
+    req.app.render('test', (err, html)=>{
+        if(err) {
+            throw err;
+        }
+        res.end(html);
+    });
+});
+
+
 
 /*------------------게시판 리스트-------------------*/
 app.get('/', function(req, res) {
@@ -55,6 +66,7 @@ app.get('/', function(req, res) {
     });
 });
 /*------------------게시판 리스트-------------------*/
+
 
 
 /*------------------게시물 디테일-------------------*/
@@ -80,7 +92,7 @@ app.get('/detail/:id', function(req, res) {
     });
 });
 /*------------------게시물 디테일-------------------*/
-
+  
 
 /*------------------글쓰기-------------------*/
 app.get('/write', function(req, res) {
@@ -141,7 +153,7 @@ app.post('/edit/:id', function(req, res) {
     res.redirect('/');
 });
 /*------------------글수정-------------------*/
-
+ 
 
 /*------------------글삭제-------------------*/
 app.post('/delete/:id', function(req, res) {
@@ -160,7 +172,7 @@ app.post('/delete/:id', function(req, res) {
     res.redirect('/');
 });
 
-/* get 방식
+/*
 app.get('/delete/:id', function(req, res) {
     let getarticle={};
     articleList.forEach(function(article) {
@@ -172,7 +184,8 @@ app.get('/delete/:id', function(req, res) {
     
     articleList.splice(idx,1);
 
-    res.redirect('/');
+    res.send(idx);
+    //res.redirect('/');
 });
 */
 

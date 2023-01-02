@@ -10,10 +10,12 @@
 </head>
 <body>
     <section>
+        <div class="bunny2023-left">
+            <img src="image/bunny2023.gif" alt="bunny2023">
+        </div>
         <div class="wrap">
-            <div class="link">
-                <a href="https://twitter.com/NJSLYR" target='_blank'>@NJSLYR</a>
-            </div>
+            <!--top-->
+            <%- include('./top.ejs') %>
             <div id="bbsdiv">
                 <!-- bbs-header -->
                 <%- include('./header.ejs') %>
@@ -24,31 +26,16 @@
                 </div>
 
                 <!-- bbs -->
-                <div>
+                <div class="bbs_wrap">
                     <%- include('./detail.ejs') %>
                 </div>
             </div>
+            <%- include('./footer.ejs') %>
         </div>
-        <p>Development @SHOTCUTISl3EST & Design @zzappung</p>
+        
+        <div class="bunny2023-right">
+            <img src="image/bunny2023.gif" alt="bunny2023">
+        </div>
     </section>
 </body>
-
-
 </html>
-
-<script>
-    function onoff() {
-        let edit = document.getElementsByClassName('edit');
-        // btn 숨기기 (display: none)
-        for ( var x = 0; x < edit.length; x++ ){
-            if(edit[x].style.display == 'none') {
-                edit[x].style.display = 'block';
-            }
-            // btn 보이기 (display: block)
-            else {
-                edit[x].style.display = 'none';
-            }
-        }
-    }
-
-</script>

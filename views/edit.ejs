@@ -11,6 +11,23 @@
     </tr>
 </form>
 
+<script>
+    function onoff() {
+        let edit = document.getElementsByClassName('edit');
+        // btn 숨기기 (display: none)
+        for ( var x = 0; x < edit.length; x++ ){
+            if(edit[x].style.display == 'none') {
+                edit[x].style.display = 'block';
+            }
+            // btn 보이기 (display: block)
+            else {
+                edit[x].style.display = 'none';
+            }
+        }
+    }
+
+</script>
+
 <!--<!DOCTYPE html>
 <html lang="en">
 <head>
