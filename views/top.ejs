@@ -3,18 +3,17 @@
         <a href="https://twitter.com/NJSLYR" target='_blank'>@NJSLYR</a>
     </div>
     <div class="bgm">
-        <button class="btn1">play sound1</button>
+        <audio id="myAudio" src="audio/bgm.mp3" preload="auto"></audio>
+        <button onclick="togglePlay()"><span class="hidden">play sound1</span></button>
     </div>
 </div>
 
 <script>
-    var audio1 = new Audio("audio/bgm.mp3");
+    var myAudio = document.getElementById("myAudio");
+    var isPlaying = false;
 
-    document.querySelector(".btn1").addEventListener("click", function () {    
-        
-        audio1.autoplay = true;
-        audio1.loop = true;
-        audio1.volume = 0.6;
-        audio1.play();
-    });
+    function togglePlay() {isPlaying ? myAudio.pause() : myAudio.play();};
+
+    myAudio.onplaying = function() {isPlaying = true;};
+    myAudio.onpause = function() {isPlaying = false;};
 </script>

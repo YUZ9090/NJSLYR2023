@@ -4,9 +4,10 @@ const { error } = require('console');
 const { response } = require('express');
 const { writer } = require('repl');
 const app = express();
-app.set('port', process.env.PORT || 3003);
+const PORT = 8001;
+//app.set('port', process.env.PORT || 3003);
 app.set("view engine", "ejs");
-
+app.set('views', __dirname + '/views');
 
 // 리소스 폴더 추가 (serve-static)
 app.use(express.static('public'));
@@ -218,8 +219,12 @@ const conn = {  // mysql 접속 설정
     database: 'monolithic'
 };
  
+app.listen(PORT, () => {
+    console.log(`server started on PORT ${PORT}`)
+})
 
+/*
 const server = http.createServer(app);
 server.listen(app.get('port'), ()=>{
     console.log('Listening on port: ' + app.get('port'));
-});
+});*/
