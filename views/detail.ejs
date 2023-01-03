@@ -22,27 +22,6 @@
             <tr class="bbs-txt_wrap">
                 <td colspan="2" class="article"><p class="detail-article"><%=item.article %></p></td>
             </tr>
-                
-                </div>
-            </div>
-
-            <div id='modal' class="modal fade">
-                <div id='content'>
-                    <div class="modal-content">
-                        <div class="modal-content_txt">
-                            <label>PASSWORD?</label><br/>
-                            <input type='button' value='x' class="close" id='btnClose' data-dismiss="modal"/>
-                        </div>
-                        <div class="modal-content_input" id ="modal-content" >
-                            <form action="/delete" method="post" >
-                                <input type="text" value="d" name="deleteidx" class="hidden">
-                                <input type='password' id='pwd' name="password" />
-                                <button type="submit">DEL</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <!--수정폼
             <form action="/board/edit/<%=item.no%>" method="post" >
                 <tr class="edit">
@@ -60,7 +39,23 @@
             
         <% })%>
     </table>
-
+    <div id='modal' class="modal fade">
+        <div id='content'>
+            <div class="modal-content">
+                <div class="modal-content_txt">
+                    <label>PASSWORD?</label><br/>
+                    <input type='button' value='x' class="close" id='btnClose' data-dismiss="modal"/>
+                </div>
+                <div class="modal-content_input" id ="modal-content" >
+                    <form action="/delete" method="post" >
+                        <input type="text" value="d" name="deleteidx" class="hidden">
+                        <input type='password' id='pwd' name="password" />
+                        <button type="submit">DEL</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     
 </div>
 
