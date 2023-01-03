@@ -158,7 +158,8 @@ app.post('/edit/:id', function(req, res) {
  
 
 /*------------------글삭제-------------------*/
-app.post('/delete/:id', function(req, res) {
+
+/*app.post('/delete/:id', function(req, res) {
     let getarticle={};
     articleList.forEach(function(article) {
         if(article.no == req.params.id) {
@@ -172,7 +173,7 @@ app.post('/delete/:id', function(req, res) {
     }else{
     }
     res.redirect('/');
-});
+});*/
 
 app.post('/delete', function(req, res) {
     let getarticle={};

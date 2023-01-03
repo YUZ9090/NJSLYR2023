@@ -26,21 +26,22 @@
             </form>
             -->
 
-            <div id='modal'>
-                <div id='content'>
-                    <div class="modal-content">
-                        <div class="modal-content_txt">
-                            <label>PASSWORD?</label><br/>
-                            <input type='button' value='x' class="close" id='btnClose'/>
-                        </div>
-                        <div class="modal-content_input">
-                            <input type='password' id='pwd' value=''/>
-                            <a href="/delete/<%=item.no%>">DEL</a>
-                        </div>
+            
+        <% })%>
+        <div id='modal'>
+            <div id='content'>
+                <div class="modal-content">
+                    <div class="modal-content_txt">
+                        <label>PASSWORD?</label><br/>
+                        <input type='button' value='x' class="close" id='btnClose'/>
+                    </div>
+                    <div class="modal-content_input">
+                        <input type='password' id='pwd' value=''/>
+                        <a href="/delete">DEL</a>
                     </div>
                 </div>
             </div>
-        <% })%>
+        </div>
 
     </table>
 </div>
