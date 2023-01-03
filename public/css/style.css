@@ -10,6 +10,11 @@ img {
 	max-width: 100%;
 	height: auto;
 	border: 0;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    /* user-drag: none; */
 }
 button {
 	border: 0;
@@ -37,6 +42,15 @@ table {
     color: #000;
 }
 
+button, input {
+    font-family: 'pixel-en', 'pixel-jp', 'pixel-kr';
+    letter-spacing: .04rem;
+}
+body {
+    font-family: 'pixel-en', 'pixel-jp', 'pixel-kr';
+    letter-spacing: .04rem;
+}
+
 ::-webkit-scrollbar {
     width: 6px;
     border: 1px solid #61FF00;
@@ -47,14 +61,8 @@ table {
 ::-webkit-scrollbar-track {
     background-color: rgba(0,0,0,.01);
 }
-button, input {
-    font-family: 'pixel-en', 'pixel-jp', 'pixel-kr';
-    letter-spacing: .04rem;
-}
-body {
-    font-family: 'pixel-en', 'pixel-jp', 'pixel-kr';
-    letter-spacing: .04rem;
-}
+
+.hidden {display: none;}
 section {
     display: flex;
     flex-direction: column;
@@ -82,11 +90,19 @@ section::before {
     position: absolute;
     top: 50px;
     left: 100px;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none
 }
 .bunny2023-right {
     position: absolute;
     top: 50px;
     right: 100px;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none
 }
 .bunny2023-left,.bunny2023-right img {
     display: block;
@@ -118,7 +134,13 @@ section::before {
 .link::after {display: block;content: ""; width: 0%; height: 2px;background: #61FF00; transition: all .2s;}
 .link:hover::after {width: 100%; background: #61FF00;}
 
-.bgm {display: block; width: 24px; height: 24px; background: #61FF00;}
+.bgm>button {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-image: url(/image/bgm.png);
+    background-size: cover;
+}
 
 
 .section-txt {
@@ -266,7 +288,8 @@ section::before {
     height: 24px;
     margin-bottom: 6px;
 }
-.modal-content_input>a {
+.modal-content_input>form {text-align: center;}
+.modal-content_input>form>button {
     width: 20%;
     text-align: center;
     height: 26px;
@@ -275,7 +298,7 @@ section::before {
     color: red;
     transition: all .2s;
 }
-.modal-content_input>a:hover {
+.modal-content_input>form>button:hover {
     background: red;
     color: #fff;
 }
