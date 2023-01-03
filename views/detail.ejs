@@ -8,58 +8,36 @@
         display: none;
 }
 </style>
+
+<% let deleteindex = 0 %>
 <div class="bbs-list">
     <table class="bbs">
         <% articleList.slice().reverse().forEach(function(item){%>
             <tr class="bbs-name_wrap">
                 <td class="bbs-name"> <span class="squ">#No.</span><%=item.no%> : <%=item.writer%> </td>
                 <td class="bbs-del">
-                    <!--<input type='button' value='DEL' id='btnOpen' class="btnOpen">-->    
-                    <button id='btnOpen' value ="<%=item.no%>" class="btnOpen" data-toggle="modal" data-target="#modal" data-notifyid="<%=item.no%>">DEL</button>
-                    <!--<button type="button" class="" data-toggle="modal" data-target="#modal">Open Modal</button>-->
+                        <button id='btnOpen' value ="<%=item.no%>" class="btnOpen" data-toggle="modal" data-target="#modal" data-notifyid="<%=item.no%>">DEL</button>
                 </td>                
             </tr>
             <tr class="bbs-txt_wrap">
                 <td colspan="2" class="article"><p class="detail-article"><%=item.article %></p></td>
             </tr>
-
-            <!-- Modal -->
-            <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog">
-                
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Modal Header</h4>
-                    </div>
-                    <div class="modal-body">
-                    <p>Some text in the modal.</p>
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
                 
                 </div>
             </div>
 
-<% var NOTIFYID=item.no; %>
             <div id='modal' class="modal fade">
                 <div id='content'>
                     <div class="modal-content">
                         <div class="modal-content_txt">
                             <label>PASSWORD?</label><br/>
                             <input type='button' value='x' class="close" id='btnClose' data-dismiss="modal"/>
-                            <!--<input type='button' value='x' class="close" id='btnClose'/>-->
                         </div>
-                        <div class="modal-content_input"  name="deleteform" value = "1">
-                            
-                            <form action="/delete/<%=NOTIFYID%>" method="post" >
-                                <a><%=NOTIFYID%></a>
-                                <input type='password' id='pwd' name="password" value='' />
+                        <div class="modal-content_input" id ="modal-content" >
+                            <form action="/delete" method="post" >
+                                <input type="text" value="d" name="deleteidx" class="hidden">
+                                <input type='password' id='pwd' name="password" />
                                 <button type="submit">DEL</button>
-                                <!--<a href="/delete/<%=item.no%>">DEL</a>-->
                             </form>
                         </div>
                     </div>
@@ -88,32 +66,14 @@
 
 <script>
 
-    
+var idx;
 
-
-
+$('.btnOpen').on('click', (e) => {
+    $('input[name=deleteidx]').attr('value',e.target.value);
+});
 
 $('.modal').on('hidden.bs.modal', function (e) {
 	$(this).find('form')[0].reset();
 });
 
-
-/*
-    var btnOpen  = document.getElementById('btnOpen');
-    var btnClose = document.getElementById('btnClose');
-    
-    // modal 창을 감춤
-    var closeRtn = function(){
-      var modal = document.getElementById('modal');
-      modal.style.display = 'none';
-    }
-    
-    // modal 창을 보여줌
-    btnOpen.onclick = function(){
-      var modal = document.getElementById('modal');
-      modal.style.display = 'block';
-    }
-    
-    btnClose.onclick = closeRtn;
-    */
 </script>

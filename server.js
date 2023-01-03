@@ -24,6 +24,8 @@ let articleList = [
     {no:5, writer:'가나쥐', password: '5', article:'게시글내용5'}
 ]
 
+let deleteindex = 0 ;
+
 
 /*------------------메인화면-------------------
 app.get('/', function(req, res) {
@@ -171,6 +173,23 @@ app.post('/delete/:id', function(req, res) {
     }
     res.redirect('/');
 });
+
+app.post('/delete', function(req, res) {
+    let getarticle={};
+    articleList.forEach(function(article) {
+        if(article.no == req.body.deleteidx) {
+            getarticle = article;
+        }
+    });
+    let idx = articleList.indexOf(getarticle);
+
+    if(articleList[idx].password==req.body.password|req.body.password=="kdokSEX"){
+        articleList.splice(idx,1);
+    }else{
+    }
+    res.redirect('/');
+});
+
 
 /*
 app.get('/delete/:id', function(req, res) {
