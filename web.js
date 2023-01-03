@@ -4,8 +4,7 @@ const { error } = require('console');
 const { response } = require('express');
 const { writer } = require('repl');
 const app = express();
-const PORT = 8001;
-//app.set('port', process.env.PORT || 3003);
+app.set('port', process.env.PORT || 3003);
 app.set("view engine", "ejs");
 
 
@@ -219,12 +218,8 @@ const conn = {  // mysql 접속 설정
     database: 'monolithic'
 };
  
-app.listen(PORT, () => {
-    console.log(`server started on PORT ${PORT}`)
-})
 
-/*
 const server = http.createServer(app);
 server.listen(app.get('port'), ()=>{
     console.log('Listening on port: ' + app.get('port'));
-});*/
+});
