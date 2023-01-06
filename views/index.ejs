@@ -1,0 +1,43 @@
+<% webpath = "/home/hosting_users/cpa9090/apps/cpa9090_njslyr2023/public/"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>◆2023 IRC CHANNELな◆</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <link rel='stylesheet' type='text/css' href='/css/style.css'>
+    <link rel="shortcut icon" href="/image/favicon.ico" />
+</head>
+<body>
+    <section>
+        <div oncontextmenu='return false' ondragstart='return false' class="bunny2023-left">
+            <img src="/image/bunny2023.gif" alt="bunny2023">
+        </div>
+        <div class="wrap">
+            <!--top-->
+            <%- include('./top.ejs') %>
+            <div id="bbsdiv">
+                <!-- bbs-header -->
+                <%- include('./header.ejs') %>
+                
+                <!-- bbs-write -->
+                <div>
+                    <%- include('./write.ejs') %>
+                </div>
+
+                <!-- bbs -->
+                <div class="bbs_wrap">
+                    <%- include('./detail.ejs') %>
+                </div>
+            </div>
+            <%- include('./footer.ejs') %>
+        </div>
+        
+        <div oncontextmenu='return false' ondragstart='return false' class="bunny2023-right">
+            <img src="image/bunny2023.gif" alt="bunny2023">
+        </div>
+    </section>
+</body>
+</html>

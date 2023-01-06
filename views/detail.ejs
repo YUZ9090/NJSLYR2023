@@ -1,0 +1,86 @@
+<div class="bbs-list">
+    <table class="bbs">
+        <% articleList.slice().reverse().forEach(function(item){%>
+            <tr class="bbs-name_wrap">
+                <td class="bbs-name"> <span class="squ">#No.</span><%=item.no%> : <%=item.writer%> </td>
+                <td class="bbs-del">
+                    <!--<input type='button' value='DEL' id='btnOpen' class="btnOpen">-->    
+                    <button id='btnOpen' value ="<%=item.no%>" class="btnOpen">DEL</button>
+                </td>                
+            </tr>
+            <tr class="bbs-txt_wrap">
+                <td colspan="2" class="article"><p class="detail-article"><%=item.article %></p></td>
+            </tr>
+
+            <!--수정폼
+            <form action="/board/edit/<%=item.no%>" method="post" >
+                <tr class="edit">
+                    <td>#No.<%=item.no%> <input name="writer"  type="text" placeholder="NAME"  required/></td>
+                    <td><input name="password"  type="password" placeholder="PASSWORD"  required/></td>
+                </tr>
+                <tr class="edit">
+                    <td colspan="2" class="article"> <textarea name="article"  rows="8" placeholder="TEXT HERE"  required></textarea></td>
+                </tr>
+                <tr class="edit">                
+                    <td colspan="2"><button type="submit">EDIT</button></td>
+                </tr>
+            </form>
+            -->
+            
+        <% })%>
+    </table>
+
+    <% articleList.forEach(function(item){%>
+    
+    <% })%>
+    <div id='modal' class="modal fade">
+        <div id='content'>
+            <div class="modal-content">
+                <div class="modal-content_txt">
+                    <label>PASSWORD?</label><br/>
+                    <input type='button' value='x' class="close" id='btnClose' data-dismiss="modal"/>
+                </div>
+                <div class="modal-content_input" id ="modal-content" >
+                    <form action="/delete" method="post" >
+                        <input type="text" value="d" name="deleteidx" class="hidden" readonly>
+                        <input type='password' id='pwd' name="password" />
+                        <button type="submit">DEL</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    //var btnClose = document.querySelectorAll('.btnClose');
+    //var btnOpen  = document.querySelectorAll('.btnOpen');
+    
+    var idx;
+
+    $('.btnOpen').on('click', (e) => {
+    $('input[name=deleteidx]').attr('value',e.target.value);
+});
+
+    
+
+    // modal 창을 감춤
+    $(".close").click(function(){
+      var modal = document.getElementById('modal');
+      //var modal = document.querySelectorAll('.modal');
+      modal.style.display = 'none';
+      //modal.item(idx).style.display = 'none';
+    });
+    
+    // modal 창을 보여줌
+    $(".btnOpen").click(function(){
+        var modal = document.getElementById('modal');
+        //var modal = document.querySelectorAll('.modal');
+        modal.style.display = 'block';
+        //var modal_array = Array.prototype.slice.call(modal);
+        //modal_array[idx].style.display = 'block'; 
+    });
+    
+
+    //btnClose.onclick = closeRtn;
+</script>

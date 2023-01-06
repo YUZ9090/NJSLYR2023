@@ -1,0 +1,19 @@
+<div class="top">
+    <div class="link">
+        <a href="https://twitter.com/NJSLYR" target='_blank'>@NJSLYR</a>
+    </div>
+    <div class="bgm">
+        <audio id="myAudio" src="audio/bgm.mp3" preload="auto"></audio>
+        <button onclick="togglePlay()"><span class="hidden">play sound1</span></button>
+    </div>
+</div>
+
+<script>
+    var myAudio = document.getElementById("myAudio");
+    var isPlaying = false;
+
+    function togglePlay() {isPlaying ? myAudio.pause() : myAudio.play();};
+
+    myAudio.onplaying = function() {isPlaying = true;};
+    myAudio.onpause = function() {isPlaying = false;};
+</script>
